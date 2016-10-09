@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Task-4. Oleg M. 2016</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Task-4" />
+	<meta name="author" content="Oleg M.">
+	<link rel="stylesheet" href="styles/fonts.css" type="text/css" />
+	<link rel="stylesheet" href="styles/reset.css" type="text/css" />
+	<link rel="stylesheet" href="styles/main.css" type="text/css" />
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+	<h1>toDoList (by Rivets.js)</h1>
+	<section id="app">
+		<header>
+			<form id="add-form">
+				<label><input type="checkbox" name="select-all" rv-checked="model.selectAll" rv-on-click="model.checkAll"/><span></span></label>
+				<input rv-value="model.taskName" type="text" name="text-input" id="item-input" placeholder="What needs to be done?" rv-on-keypress="model.addTask" />
+			</form>
+		</header>
+		<main id="list">
+			<ul>
+				<li class="list-item" rv-each-task="model.tasks" rv-class-completed="task.complete" rv-show="task.show">
+					<label><input type="checkbox" name="check-item" rv-checked="task.complete" id="select-all" rv-on-click="model.getLeftTasksCount"/><span></span></label>
+					<p rv-text="task.text" contenteditable></p>
+					<button class="button remove-button" rv-on-click="model.removeTask" rv-data-index="task.index"></button>
+				</li>
+			</ul>
+		</main>
+		<footer>
+			<div class="footer-cont">
+				<p><span id="left-count" rv-value="model.getLeftTasksCount < tasks"></span>{model.leftTasksCount} items left</p>
+			</div>
+			<div class="footer-cont">
+				<button class="button" rv-on-click="model.showAllTasks">All</button>
+				<button class="button" rv-on-click="model.showActiveTasks">Active</button>
+				<button class="button" rv-on-click="model.showCompletedTasks">Completed</button>
+			</div>
+			<div class="footer-cont">
+				<button class="button remove-completed" rv-on-click="model.clearCompletedTasks">Clear completed</button>
+			</div>
+		</footer>
+	</section>
+
+	<script type="text/javascript" src="js/rivets.bundled.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
